@@ -1,12 +1,10 @@
 require 'rails_helper'
-require './spec/helpers/spec_helper_methods'
-include SpecHelpers
 
 RSpec.feature "Front Page" do
   before(:each) do
-    user_mock = User.create(username: "RedditUserName", access_token: "mocktoken1a81jv0ck4")
+    user_mock = User.create(access_token: "mocktoken1a81jv0ck4")
+    user_mock.username = "RedditUserName"
     user_mock.karma = 16
-    user_mock.save
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_mock)
   end
 
