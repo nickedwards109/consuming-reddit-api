@@ -12,10 +12,14 @@ RSpec.feature "Front Page" do
 
     visit "/"
     expect(page).to have_selector(".username")
-    expect(page).to have_content("RedditUserName")
+    # expect(page).to have_content("RedditUserName")
     expect(page).to have_selector(".karma")
-    expect(page).to have_content("16")
+    # expect(page).to have_content("16")
     expect(page).to have_selector(".inbox")
     expect(page).to have_content("Logout")
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(nil)
+    click_on "Logout"
+    expect(page).to have_content("Login")
   end
 end
