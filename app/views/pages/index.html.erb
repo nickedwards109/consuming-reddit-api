@@ -1,6 +1,9 @@
 <% if @current_user %>
-  <div class="username"><%= @current_user.username %></div>
-  <div class="karma"><%= @current_user.karma %></div>
+  <div class="username">
+    <%= @current_user.username %>
+    <span class="karma"> (<%= @current_user.karma %>)</span>
+  </div>
+  <div class="karma"></div>
   <div class="inbox"></div>
   <%= link_to "Logout", sessions_path, class: "logout", method: :delete %>
 <% else %>

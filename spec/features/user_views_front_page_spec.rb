@@ -12,9 +12,9 @@ RSpec.feature "Front Page" do
 
     visit "/"
     expect(page).to have_selector(".username")
-    # expect(page).to have_content("RedditUserName")
+    expect(page).to have_content("RedditUserName")
     expect(page).to have_selector(".karma")
-    # expect(page).to have_content("16")
+    expect(page).to have_content("16")
     expect(page).to have_selector(".inbox")
     expect(page).to have_content("Logout")
 
