@@ -9,6 +9,7 @@ RSpec.feature "Front Page" do
     user_mock.username = "RedditUserName"
     user_mock.karma = 16
     subreddit = Subreddit.new(title: "programming")
+    user_mock.subreddits = []
     user_mock.subreddits << subreddit
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_mock)
 

@@ -25,16 +25,12 @@ RSpec.describe RedditService do
     VCR.use_cassette("reddit_service.get_subscribed_subreddits") do
       raw_subreddits = RedditService.get_subscribed_subreddits(user)
 
-      expect(raw_subreddits).to be_a Hash
-      expect(raw_subreddits).to have_key(:data)
-      expect(raw_subreddits[:data]).to be_a Hash
-      expect(raw_subreddits[:data]).to have_key(:children)
-      expect(raw_subreddits[:data][:children]).to be_an Array
-      expect(raw_subreddits[:data][:children].first).to be_a Hash
-      expect(raw_subreddits[:data][:children].first).to have_key(:data)
-      expect(raw_subreddits[:data][:children].first[:data]).to be_a Hash
-      expect(raw_subreddits[:data][:children].first[:data]).to have_key(:title)
-      expect(raw_subreddits[:data][:children].first[:data][:title]).to be_a String
+      expect(raw_subreddits).to be_an Array
+      expect(raw_subreddits.first).to be_a Hash
+      expect(raw_subreddits.first).to have_key(:data)
+      expect(raw_subreddits.first[:data]).to be_a Hash
+      expect(raw_subreddits.first[:data]).to have_key(:title)
+      expect(raw_subreddits.first[:data][:title]).to be_a String
     end
   end
 end
