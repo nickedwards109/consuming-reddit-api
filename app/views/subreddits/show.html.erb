@@ -2,7 +2,10 @@
 <div class="subscriber-count"><%= @subscriber_count %> readers</div>
 <div class="description"><%= @description %></div>
 <div class="posts">
-  <%= @posts.each do |post| %>
-    <%= link_to post.title, post.url, class: "post" %>
+  <% @posts.each do |post| %>
+    <div class="post">
+    <%= link_to post.title, post.url %>
+    <span class="score"><%= post.score %></span>
+    </div>
   <% end %>
 </div>

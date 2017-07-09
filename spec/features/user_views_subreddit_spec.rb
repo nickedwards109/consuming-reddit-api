@@ -30,6 +30,8 @@ RSpec.feature "Subreddit" do
     within(".posts") do
       expect(page).to have_selector(".post", count: 15)
       expect(page).to have_link("Seven useful habits for programmers")
+      expect(page).to have_selector(".score")
+      expect(page).to have_content("329")
     end
   end
   end
