@@ -37,4 +37,23 @@ RSpec.describe RedditService do
       expect(raw_subreddits.first[:data][:subscribers]).to be_an Integer
     end
   end
+
+  it "gets a subreddit's top posts" do
+    user = User.create(access_token: ENV['test_access_token'])
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    subreddit_title = "programming"
+
+    VCR.use_cassette("reddit_service.get_hot_posts") do
+      raw_posts = RedditService.get_hot_posts(subreddit_title, user)
+
+      expect(raw_posts).to be_an Array
+      expect(raw_posts.first).to be_a Hash
+      expect(raw_posts.first).to have_key(:data)
+      expect(raw_posts.first[:data]).to be_a Hash
+      expect(raw_posts.first[:data]).to have_key(:title)
+      expect(raw_posts.first[:data][:title]).to be_a String
+      expect(raw_posts.first[:data]).to have_key(:url)
+      expect(raw_posts.first[:data][:url]).to be_a String
+    end
+  end
 end
