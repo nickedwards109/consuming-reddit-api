@@ -8,7 +8,9 @@ class User < ApplicationRecord
     subreddits = RedditService.get_subscribed_subreddits(self)
     self.subreddits = []
     subreddits.each do |subreddit|
-      self.subreddits << Subreddit.new(title: subreddit[:data][:title])
+      self.subreddits << Subreddit.new(title: subreddit[:data][:title],
+                                       subscriber_count: subreddit[:data][:subscribers],
+                                       description: subreddit[:data][:description])
     end
   end
 end

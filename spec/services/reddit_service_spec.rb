@@ -31,6 +31,10 @@ RSpec.describe RedditService do
       expect(raw_subreddits.first[:data]).to be_a Hash
       expect(raw_subreddits.first[:data]).to have_key(:title)
       expect(raw_subreddits.first[:data][:title]).to be_a String
+      expect(raw_subreddits.first[:data]).to have_key(:description)
+      expect(raw_subreddits.first[:data][:description]).to be_a String
+      expect(raw_subreddits.first[:data]).to have_key(:subscribers)
+      expect(raw_subreddits.first[:data][:subscribers]).to be_an Integer
     end
   end
 end

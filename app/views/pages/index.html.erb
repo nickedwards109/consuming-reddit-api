@@ -1,7 +1,7 @@
 <% if @current_user %>
   <div class="subscribed-subreddits">
     <% @current_user.subreddits.each do |subreddit| %>
-      <%= subreddit.title %>
+      <%= link_to subreddit.title, "/subreddits?title=#{subreddit.title}&subscriber_count=#{subreddit.subscriber_count}&description=#{subreddit.description}" %>
     <% end %>
   </div>
   <div class="username">
