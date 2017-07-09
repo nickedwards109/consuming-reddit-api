@@ -1,3 +1,8 @@
-<div class="title"><%= @title %></div>
+<div class="subreddit-title"><%= @subreddit_title %></div>
 <div class="subscriber-count"><%= @subscriber_count %> readers</div>
 <div class="description"><%= @description %></div>
+<div class="posts">
+  <%= @posts.each do |post| %>
+    <%= link_to post.title, post.url, class: "post" %>
+  <% end %>
+</div>

@@ -13,4 +13,12 @@ class RedditService
     subreddits_json = JSON.parse(response.body, symbolize_names: true)
     subreddits_json[:data][:children]
   end
+
+  def self.get_hot_posts(subreddit_title, user)
+    hot_posts_connection = Faraday.new(url: "https://oauth.reddit.com/r/#{subreddit_title}/hot?limit=15")
+    hot_posts_connection.headers['Authorization'] = "bearer #{user.access_token}"
+    response = hot_posts_connection.get
+    hot_posts_json = JSON.parse(response.body, symbolize_names: true)
+    hot_posts_json[:data][:children]
+  end
 end

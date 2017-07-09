@@ -11,5 +11,5 @@
   <div class="inbox"></div>
   <%= link_to "Logout", sessions_path, class: "logout", method: :delete %>
 <% else %>
-  <%= link_to "Login", "https://www.reddit.com/api/v1/authorize?client_id=#{ENV['client_id']}&response_type=code&state=1234&redirect_uri=http://localhost:3000/reddit/callback/&duration=temporary&scope=identity,mysubreddits", class: "login" %>
+  <%= link_to "Login", "https://www.reddit.com/api/v1/authorize?client_id=#{ENV['client_id']}&response_type=code&state=1234&redirect_uri=http://localhost:3000/reddit/callback/&duration=temporary&scope=identity,mysubreddits,read", class: "login" %>
 <% end %>
